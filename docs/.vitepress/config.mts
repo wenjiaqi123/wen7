@@ -14,7 +14,7 @@ export default defineConfig({
 
     head: [['link', {rel: 'icon', href: '/favicon.ico'}]],
     lang: "zh",
-    base: "/wen7/",               //部署到 github pages 时需要配置这个选项,否则资源无法正确加载, 如果你的仓库名是 wen7，就写 /wen7/
+    base: "/",               //部署到 github pages 时需要配置这个选项,否则资源无法正确加载, 如果你的仓库名是 wen7，就写 /wen7/,以斜杠开头和结尾
 
     // Routing
     cleanUrls: true,
