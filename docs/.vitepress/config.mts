@@ -76,13 +76,15 @@ export default defineConfig({
         lastUpdated: {
             text: '最后更新时间',
             formatOptions: {
+                timeZone: 'Asia/Shanghai',	//上海时区
                 year: 'numeric',
                 month: '2-digit',
                 day: '2-digit',
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit',
-                timeZoneName: 'short'
+                timeZoneName: 'short',
+                hour12: false				// 24小时
             }
         },
         //Algolia
