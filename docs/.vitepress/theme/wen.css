@@ -1,0 +1,144 @@
+/* ===== 仅桌面端生效 ===== */
+@media (min-width: 960px) {
+    /* 调整导航栏的样式 */
+    .VPNav {
+        background-color: #FFFFFF;
+    }
+
+    /* 调整 Sidebar 的样式 */
+    .VPSidebar {
+        padding-left: 20px !important;
+        width: var(--vp-sidebar-width) !important;
+    }
+
+    .VPContent,
+    .VPDoc,
+    .VPDoc .container {
+        max-width: none !important;
+        width: 100% !important;
+    }
+
+    /* 调整 Outline 靠左 */
+    .VPContent.has-sidebar {
+        padding-left: var(--vp-sidebar-width) !important;
+    }
+
+    /* 文档内容不再限制最大宽度（占据剩余空间） */
+    .VPDoc .content-container {
+        max-width: none !important;
+    }
+
+
+    /* ===== 自定义样式 ===== */
+    /* 全局：从 h2 开始计数,因为本人习惯文档正标题是 h1 */
+    .VPDoc {
+        counter-reset: h2;
+    }
+
+    /* h2：一、二、三 */
+    .VPDoc h2 {
+        counter-reset: h3; /* 每个新 h2，h3 重新从 1 开始 */
+    }
+
+    .VPDoc h2::before {
+        counter-increment: h2;
+        content: counter(h2, cjk-ideographic) "、";
+        margin: 0 6px;
+        color: var(--vp-c-text-2);
+    }
+
+
+    /* h3：2.1 / 2.2 / 2.3 */
+    .VPDoc h3 {
+        counter-reset: h4; /* 每个新 h3，h4 重新从 1 开始 */
+    }
+
+    .VPDoc h3::before {
+        counter-increment: h3;
+        content: counter(h2) "." counter(h3) " ";
+        margin: 0 6px;
+        color: var(--vp-c-text-2);
+    }
+
+    /* h4：2.1.1 / 2.1.2 ... */
+    .VPDoc h4 {
+        counter-reset: h5;
+    }
+
+    .VPDoc h4::before {
+        counter-increment: h4;
+        content: counter(h2) "." counter(h3) "." counter(h4) " ";
+        margin: 0 6px;
+        color: var(--vp-c-text-2);
+    }
+
+    /* 可选：h5/h6 继续递推 */
+    .VPDoc h5 {
+        counter-reset: h6;
+    }
+
+    .VPDoc h5::before {
+        counter-increment: h5;
+        content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+        margin: 0 6px;
+    }
+
+    .VPDoc h6::before {
+        counter-increment: h6;
+        content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " ";
+        margin: 0 6px;
+    }
+
+
+    /* ===== Outline 编号：一 / 二 / 2.1 / 2.1.1 ... ===== */
+    .VPDocAsideOutline .content{
+        counter-reset: h2;
+    }
+
+    /* 一级（对应 h2）：ul.root > li */
+    .VPDocAsideOutline .VPDocOutlineItem.root > li{
+        counter-increment: h2;
+        counter-reset: h3;
+    }
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > a.outline-link::before{
+        content: counter(h2, cjk-ideographic) "、";
+        font-weight: 600;
+    }
+    /* Outline 中 h2（一级目录）加粗 */
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > a.outline-link {
+        font-weight: 600;
+    }
+
+    /* 二级（对应 h3）：li > ul.nested > li */
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li{
+        counter-increment: h3;
+        counter-reset: h4;
+    }
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li > a.outline-link::before{
+        content: counter(h2) "." counter(h3) " ";
+    }
+
+    /* 三级（对应 h4）：再嵌套一层 */
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li > ul.nested > li{
+        counter-increment: h4;
+    }
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li > ul.nested > li > a.outline-link::before{
+        content: counter(h2) "." counter(h3) "." counter(h4) " ";
+    }
+
+    strong{
+        background-color: black;
+        color: white;
+        padding: 0 4px;
+        border-radius: 4px;
+    }
+
+    mark {
+        padding: 0 6px;
+        font-size: 18px;
+        color: #e41919;
+        font-weight: bold;
+        background-color: bisque;
+        border-radius: 4px;
+    }
+}
