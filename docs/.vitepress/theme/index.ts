@@ -3,22 +3,23 @@ import DefaultTheme from 'vitepress/theme'
 import Layout from './Layout.vue'
 import './wen.css'
 
-import {inBrowser} from 'vitepress'                     // 引入
-import type {Theme} from 'vitepress'                    // 引入
+import {inBrowser} from 'vitepress'
+import type {Theme, EnhanceAppContext} from 'vitepress'
 
 export default {
     ...DefaultTheme,
     Layout,
 
-    enhanceApp({router}) {                  // 重写 enhanceApp
-        // 保留默认主题的 enhanceApp（如果有）
-        DefaultTheme.enhanceApp?.({router} as any)
+    enhanceApp(ctx: EnhanceAppContext) {
+        // ✅ 一定要把完整 ctx 传给默认主题
+        DefaultTheme.enhanceApp?.(ctx)
 
         if (!inBrowser) return
 
+        const {router} = ctx
+
         router.onAfterRouteChanged = () => {
             const w: any = window
-            // Umami Cloud / v2 标准写法
             if (w.umami?.track) {
                 w.umami.track()
             }
