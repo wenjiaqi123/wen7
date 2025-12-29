@@ -12,7 +12,20 @@ export default defineConfig({
     titleTemplate: "闻家奇",
     description: "闻家奇的个人博客",
 
-    head: [['link', {rel: 'icon', href: '/favicon.ico'}]],
+    head: [
+        ['link', {rel: 'icon', href: '/favicon.ico'}],
+        ['script',
+            {},
+            `
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f0ad56dd0fef53e93dd3dd1419a1fa8f";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+        })();
+        `.trim()]
+    ],
     lang: "zh",
     base: "/",               //部署到 github pages 时需要配置这个选项,否则资源无法正确加载, 如果你的仓库名是 wen7，就写 /wen7/,以斜杠开头和结尾
 
