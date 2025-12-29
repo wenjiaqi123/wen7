@@ -83,7 +83,6 @@ export default defineConfig({
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit',
-                timeZoneName: 'short',
                 hour12: false				// 24小时
             }
         },
