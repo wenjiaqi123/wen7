@@ -24,7 +24,15 @@ export default defineConfig({
         var s = document.getElementsByTagName("script")[0]; 
         s.parentNode.insertBefore(hm, s);
         })();
-        `.trim()]
+        `.trim()],
+        [
+            'script',
+            {
+                defer: '',
+                src: 'https://cloud.umami.is/script.js',
+                'data-website-id': '03f0ad47-83c7-4429-9be0-0f63b43824fc'
+            }
+        ]
     ],
     lang: "zh",
     base: "/",               //部署到 github pages 时需要配置这个选项,否则资源无法正确加载, 如果你的仓库名是 wen7，就写 /wen7/,以斜杠开头和结尾
