@@ -178,7 +178,8 @@ export const generateNav = (): DefaultTheme.NavItem[] => {
                 {
                     items: [
                         {text: '关于本站', link: '/其他/关于/关于本站/'},
-                        {text: '关于我', link: '/其他/关于/关于我/'}
+                        {text: '关于我', link: '/其他/关于/关于我/'},
+                        {text: '创业日记', link: '/其他/关于/创业日记/'},
                     ]
                 }
             ]
