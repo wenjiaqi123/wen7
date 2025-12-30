@@ -68,3 +68,10 @@ features:
       src: /logo.png
     details: "PostGIS、GeoServer"
 ---
+
+
+<Umami
+share-url="https://cloud.umami.is/analytics/us/share/7GgDX4akt4AiNXaN?date=12month"
+website-id="03f0ad47-83c7-4429-9be0-0f63b43824fc"
+timezone="Asia/Shanghai"
+/>

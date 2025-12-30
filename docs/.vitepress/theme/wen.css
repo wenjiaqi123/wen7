@@ -29,6 +29,46 @@
     }
 
 
+    /* ===== 情况：没有 Sidebar ===== */
+    .VPContent:not(.has-sidebar) {
+        padding-left: 0 !important;
+    }
+
+    /* Outline 固定到最左 */
+    .VPContent:not(.has-sidebar) .VPDocAside,
+    .VPContent:not(.has-sidebar) .VPAside {
+        padding-left: 20px;
+        position: fixed;
+        left: 0;
+        top: var(--vp-nav-height);
+        width: 360px; /* Outline 宽度 */
+        height: calc(100vh - var(--vp-nav-height));
+        overflow-y: auto;
+
+        background: var(--vp-c-bg);
+        border-right: 1px solid var(--vp-c-divider);
+        display: block !important;
+    }
+
+    /* 文档区域让出 Outline 空间 */
+    .VPContent:not(.has-sidebar) .VPDoc .container{
+        margin-left: 360px; /* 与 Outline 宽度一致 */
+        max-width: none !important;
+        width: auto !important;
+    }
+
+    .VPContent:not(.has-sidebar) .VPDoc .container .aside{
+        max-width: 0 !important;
+        width: 0 !important;
+    }
+
+    .VPContent:not(.has-sidebar) .VPDoc .content {
+        padding-left: 0 !important;
+        max-width: none !important;
+        width: auto !important;
+    }
+
+
     /* ===== 自定义样式 ===== */
     /* 全局：从 h2 开始计数,因为本人习惯文档正标题是 h1 */
     .VPDoc {
@@ -91,42 +131,46 @@
 
 
     /* ===== Outline 编号：一 / 二 / 2.1 / 2.1.1 ... ===== */
-    .VPDocAsideOutline .content{
+    .VPDocAsideOutline .content {
         counter-reset: h2;
     }
 
     /* 一级（对应 h2）：ul.root > li */
-    .VPDocAsideOutline .VPDocOutlineItem.root > li{
+    .VPDocAsideOutline .VPDocOutlineItem.root > li {
         counter-increment: h2;
         counter-reset: h3;
     }
-    .VPDocAsideOutline .VPDocOutlineItem.root > li > a.outline-link::before{
+
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > a.outline-link::before {
         content: counter(h2, cjk-ideographic) "、";
         font-weight: 600;
     }
+
     /* Outline 中 h2（一级目录）加粗 */
     .VPDocAsideOutline .VPDocOutlineItem.root > li > a.outline-link {
         font-weight: 600;
     }
 
     /* 二级（对应 h3）：li > ul.nested > li */
-    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li{
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li {
         counter-increment: h3;
         counter-reset: h4;
     }
-    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li > a.outline-link::before{
+
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li > a.outline-link::before {
         content: counter(h2) "." counter(h3) " ";
     }
 
     /* 三级（对应 h4）：再嵌套一层 */
-    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li > ul.nested > li{
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li > ul.nested > li {
         counter-increment: h4;
     }
-    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li > ul.nested > li > a.outline-link::before{
+
+    .VPDocAsideOutline .VPDocOutlineItem.root > li > ul.nested > li > ul.nested > li > a.outline-link::before {
         content: counter(h2) "." counter(h3) "." counter(h4) " ";
     }
 
-    strong{
+    strong {
         background-color: black;
         color: white;
         padding: 0 4px;

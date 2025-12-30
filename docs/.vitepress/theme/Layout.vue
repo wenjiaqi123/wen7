@@ -72,11 +72,12 @@
       <!--  </div>-->
       <!--</template>-->
 
-      <!--<template #doc-after>-->
-      <!--  <div class="test-style">-->
-      <!--    🔥 doc-after：Markdown 内容之后（评论区、赞赏、相关阅读）-->
-      <!--  </div>-->
-      <!--</template>-->
+      <template #doc-after>
+        <!--<div class="test-style">-->
+          <!--🔥 doc-after：Markdown 内容之后（评论区、赞赏、相关阅读）-->
+          <Giscus></Giscus>
+        <!--</div>-->
+      </template>
 
       <!--<template #page-bottom>-->
       <!--  <div class="test-style">-->
@@ -139,6 +140,7 @@
 
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
+import Giscus from "./Giscus.vue";
 
 const Layout = DefaultTheme.Layout
 </script>
