@@ -23,7 +23,7 @@ hero:
 features:
   - title: 前端
     icon:
-      src: /logo.png
+      src: /frontend.png
     details: "
             Vue2、Vue3、ElementPlus、AntDesign
             <br>
@@ -33,7 +33,7 @@ features:
             "
   - title: 后端
     icon:
-      src: /logo.png
+      src: /backend.png
     details: "
             Java、SpringBoot、SpringCloud
             <br>
@@ -43,7 +43,7 @@ features:
             "
   - title: 数据库
     icon:
-      src: /logo.png
+      src: /database.png
     details: "
             MySQL、PostgreSQL
             <br>
@@ -53,19 +53,19 @@ features:
             "
   - title: 运维
     icon:
-      src: /logo.png
+      src: /operation.png
     details: "
             Linux、Docker、Kubernetes
             "
   - title: AI
     icon:
-      src: /logo.png
+      src: /ai.png
     details: "
             MCP、PyTorch
             "
   - title: GIS
     icon:
-      src: /logo.png
+      src: /gis.png
     details: "PostGIS、GeoServer"
 ---
 
