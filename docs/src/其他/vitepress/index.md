@@ -881,7 +881,7 @@ export const generateSidebar = (): DefaultTheme.Sidebar => {
 
 ## 样式问题
 
-- checkbox 不渲染
+### checkbox 不渲染
 
 
 ```bash
@@ -902,7 +902,7 @@ export default defineConfig({
 });
 ```
 
-- 高亮不渲染 `==  ==`
+### 高亮不渲染 `==  ==`
 
 ```bash
 npm i markdown-it-mark -D
@@ -924,22 +924,33 @@ export default defineConfig({
 
 - 在自定义 `wen.css` 文件里添加自己想要的样式
 
-    - ```css
-        strong{
-            background-color: black;
-            color: white;
-            padding: 0 4px;
-            border-radius: 4px;
-        }
-        
-        mark {
-            padding: 0 6px;
-            font-size: 18px;
-            color: #e41919;
-            font-weight: bold;
-            background-color: bisque;
-            border-radius: 4px;
-        }
+```css
+strong{
+    background-color: black;
+    color: white;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+mark {
+    padding: 0 6px;
+    font-size: 18px;
+    color: #e41919;
+    font-weight: bold;
+    background-color: bisque;
+    border-radius: 4px;
+}
+```
+
+### 样式错乱
+
+博主本人使用的 Typora 喜欢把代码块放到列表里面，导致 vitepress 发布上去样式错乱，把代码块不要放到有序列表或者无序列表里，和正文一个等级即可。
+
+~~~markdown
+- ```css
+
+  ```
+~~~
 
 
 
