@@ -38,17 +38,17 @@
 
 - Use TypeScript：是否使用 TS
 
-- ```shell
+```shell
   // 运行起来
   pnpm run docs:dev
-  ```
+```
 
 ```json
 //package.json 
 "scripts": {
-"docs:dev": "vitepress dev docs --host 0.0.0.0",	//添加 --host 0.0.0.0 可以通过 ip 访问,建议添加,后续移动端
-"docs:build": "vitepress build docs",
-"docs:preview": "vitepress preview docs"
+    "docs:dev": "vitepress dev docs --host 0.0.0.0",	//添加 --host 0.0.0.0 可以通过 ip 访问,建议添加,后续移动端
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
 }
 ```
 
@@ -610,11 +610,11 @@ export default {
 
 - page 不生效，每个md 文件默认是渲染成 layout:doc，除非在 markdown 顶部添加 `layout:page`，则展示 page-top/bottm 插槽
 
-    - ```yaml
+```yaml
     ---
     layout: page
     ---
-    ```
+```
 
 
 
@@ -632,13 +632,13 @@ export default {
 
     - 没有上一页、下一页
 
-- ```markdown
+- ~~~markdown
   # Vitepress 教程
   
   - [前置知识](./前置知识.md)
   - [快速入门](./快速入门.md)
   - [自定义主题](./自定义主题.md)
-  ```
+  ~~~
 
 ### 通过 sidebar 侧边索引
 
@@ -672,11 +672,12 @@ export default {
 
 - 在 `docs/.vitepress/theme` 下新建 `wen.css`，并且在 `index.ts` 里引入
 
-    - ```ts
+```ts
     import './wen.css'
-    ```
+```
 
-- ```css
+
+```css
   /* ===== 仅桌面端生效 ===== */
   @media (min-width: 960px) {
       /* 调整导航栏的样式 */
@@ -707,9 +708,9 @@ export default {
           max-width: none !important;
       }
   }
-  ```
+```
 
-- ```css
+```css
       /* ===== 情况：没有 Sidebar ===== */
       .VPContent:not(.has-sidebar) {
           padding-left: 0 !important;
@@ -748,8 +749,9 @@ export default {
           max-width: none !important;
           width: auto !important;
       }
-  ```
+```
 
+```css
 ### 文档标题样式
 
 - 在上面 `wen.css`后面继续添加，可以调整文档的标题编号
@@ -814,7 +816,9 @@ export default {
           content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " ";
           margin: 0 6px;
       }
-  ```
+```
+
+
 
 ### Outline 标题样式
 
@@ -880,43 +884,44 @@ export const generateSidebar = (): DefaultTheme.Sidebar => {
 
 - checkbox 不渲染
 
-    - ```bash
-    npm i markdown-it-task-lists -D
-    ```
 
-    - ```ts
-    // .vitepress/config.ts
-    import { defineConfig } from "vitepress";
-    import taskLists from "markdown-it-task-lists";
-    
-    export default defineConfig({
-      markdown: {
-        config(md) {
-          md.use(taskLists, { enabled: true });	 // enabled=true 才会渲染成 checkbox
-        },
-      },
-    });
-    ```
+```bash
+npm i markdown-it-task-lists -D
+```
+
+```ts
+// .vitepress/config.ts
+import { defineConfig } from "vitepress";
+import taskLists from "markdown-it-task-lists";
+
+export default defineConfig({
+  markdown: {
+    config(md) {
+      md.use(taskLists, { enabled: true });	 // enabled=true 才会渲染成 checkbox
+    },
+  },
+});
+```
 
 - 高亮不渲染 `==  ==`
 
-    - ```bash
-    npm i markdown-it-mark -D
-    ```
+```bash
+npm i markdown-it-mark -D
+```
 
-    - ```ts
-    // .vitepress/config.ts
-    import { defineConfig } from 'vitepress'
-    import mark from 'markdown-it-mark'
-    
-    export default defineConfig({
-      markdown: {
-        config(md) {
-          md.use(mark)					//高亮
-        }
-      }
-    })
-    ```
+```ts
+// .vitepress/config.ts
+import { defineConfig } from 'vitepress'
+import mark from 'markdown-it-mark'
+
+export default defineConfig({
+  markdown: {
+    config(md) {
+      md.use(mark)					//高亮
+    }
+  }
+})
+```
 
 - 在自定义 `wen.css` 文件里添加自己想要的样式
 
@@ -927,7 +932,7 @@ export const generateSidebar = (): DefaultTheme.Sidebar => {
             padding: 0 4px;
             border-radius: 4px;
         }
-    
+        
         mark {
             padding: 0 6px;
             font-size: 18px;
@@ -936,7 +941,6 @@ export const generateSidebar = (): DefaultTheme.Sidebar => {
             background-color: bisque;
             border-radius: 4px;
         }
-    ```
 
 
 
@@ -950,15 +954,15 @@ export const generateSidebar = (): DefaultTheme.Sidebar => {
 
 - 创建 .gitignore 去掉不要提交的
 
-    - ```
-    /.idea/
-    /docs/.vitepress/cache/
-    /node_modules/
-    ```
+```
+/.idea/
+/docs/.vitepress/cache/
+/node_modules/
+```
 
 - 根据官网提示，在根目录下新建 `.github/workflows/deploy.yml` 文件，注意： ==把文件里的分支切换成 master==
 
-    - ```yaml
+```yaml
     # 构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
     #
     name: Deploy VitePress site to Pages
@@ -1015,7 +1019,7 @@ export const generateSidebar = (): DefaultTheme.Sidebar => {
       deploy:
         environment:
           name: github-pages
-          url: ${{ steps.deployment.outputs.page_url }}
+		  url: ${{ steps.deployment.outputs.page_url }}
         needs: build
         runs-on: ubuntu-latest
         name: Deploy
@@ -1023,7 +1027,7 @@ export const generateSidebar = (): DefaultTheme.Sidebar => {
           - name: Deploy to GitHub Pages
             id: deployment
             uses: actions/deploy-pages@v4
-    ```
+```
 
 - 推送到 github，注意：要是 public 的
 
@@ -1203,97 +1207,96 @@ export default {
 ![image-20241120132306140](http://attach.blog.wen7.online/202512300808303.png)
 
 1. 确保博客的仓库是 公开的，
-
 2. 安装 giscus：https://github.com/docs-site/giscus-discussions，注意选择 repositories。
-
 3. 在项目的 `Settings` 里`General`往下拉，，勾选 `Discussions`
-
 4. 填写仓库名称，格式为：Github账号名称/博客仓库名称。例如：wenjiaqi123/wen7
-
 5. 根据 giscus 生成的配置文件编写 vue 文件
-
     - ![image-20251230204037016](http://attach.blog.wen7.online/202512302040165.png)
 
-    - ```vue
-     <template>
-       <div class="giscus-wrapper">
-         <div ref="container"></div>
-       </div>
-     </template>
-     
-     <script setup lang="ts">
-     import { onMounted, ref, watch } from 'vue'
-     import { useRoute, inBrowser } from 'vitepress'
-     
-     const container = ref<HTMLDivElement | null>(null)
-     const route = useRoute()
-     
-     function renderGiscus() {
-       if (!inBrowser || !container.value) return
-     
-       // 清空，防止 SPA 切换重复挂载
-       container.value.innerHTML = ''
-     
-       const script = document.createElement('script')
-       script.src = 'https://giscus.app/client.js'
-       script.async = true
-       script.crossOrigin = 'anonymous'
-     
-       /* ===== 你的 giscus 配置（原样使用） ===== */
-       script.setAttribute('data-repo', '替换成你自己的属性')
-       script.setAttribute('data-repo-id', '替换成你自己的属性')
-       script.setAttribute('data-category', 'General')
-       script.setAttribute('data-category-id', '替换成你自己的属性')
-       script.setAttribute('data-mapping', 'pathname')
-       script.setAttribute('data-strict', '0')
-       script.setAttribute('data-reactions-enabled', '1')
-       script.setAttribute('data-emit-metadata', '1')
-       script.setAttribute('data-input-position', 'top')
-       script.setAttribute('data-theme', 'preferred_color_scheme')
-       script.setAttribute('data-lang', 'zh-CN')
-       script.setAttribute('data-loading', 'lazy')
-       /* ======================================= */
-     
-       container.value.appendChild(script)
-     }
-     
-     onMounted(renderGiscus)
-     
-     /**
-      * ⚠️ 必须监听路由变化
-      * VitePress 是 SPA，不监听会导致评论不刷新
-      */
-     watch(
-         () => route.path,
-         () => renderGiscus()
-     )
-     </script>
-     
-     <style scoped>
-     .giscus-wrapper {
-       margin-top: 48px;
-     }
-     </style>
-     ```
+```vue
+<template>
+  <div class="giscus-wrapper">
+    <div ref="container"></div>
+  </div>
+</template>
 
-6. 在 `docs/.vitepress/theme/index.ts` 里注册该组件
+<script setup lang="ts">
+import { onMounted, ref, watch } from 'vue'
+import { useRoute, inBrowser } from 'vitepress'
 
-    1. ```ts
-      import Giscus from './Giscus.vue'	//引入
-      
-      
-      ctx.app.component('Giscus', Giscus) //注册 Giscus 组件
-      ```
+const container = ref<HTMLDivElement | null>(null)
+const route = useRoute()
 
-7. 在 Layout.vue 的插槽里使用该组件
+function renderGiscus() {
+  if (!inBrowser || !container.value) return
 
-    1. ```vue
-          <template #doc-after>
-              <Giscus></Giscus>
-          </template>
-      ```
+  // 清空，防止 SPA 切换重复挂载
+  container.value.innerHTML = ''
 
-      
+  const script = document.createElement('script')
+  script.src = 'https://giscus.app/client.js'
+  script.async = true
+  script.crossOrigin = 'anonymous'
+
+  /* ===== 你的 giscus 配置（原样使用） ===== */
+  script.setAttribute('data-repo', 'wenjiaqi123/wen7')
+  script.setAttribute('data-repo-id', 'R_kgDOQwzcEA')
+  script.setAttribute('data-category', 'General')
+  script.setAttribute('data-category-id', 'DIC_kwDOQwzcEM4C0X1S')
+  script.setAttribute('data-mapping', 'pathname')
+  script.setAttribute('data-strict', '0')
+  script.setAttribute('data-reactions-enabled', '1')
+  script.setAttribute('data-emit-metadata', '1')
+  script.setAttribute('data-input-position', 'top')
+  script.setAttribute('data-theme', 'preferred_color_scheme')
+  script.setAttribute('data-lang', 'zh-CN')
+  script.setAttribute('data-loading', 'lazy')
+  /* ======================================= */
+
+  container.value.appendChild(script)
+}
+
+onMounted(renderGiscus)
+
+/**
+ * ⚠️ 必须监听路由变化
+ * VitePress 是 SPA，不监听会导致评论不刷新
+ */
+watch(
+    () => route.path,
+    () => renderGiscus()
+)
+</script>
+
+<style scoped>
+.giscus-wrapper {
+  margin-top: 48px;
+}
+</style>
+```
+
+
+
+1. 在 `docs/.vitepress/theme/index.ts` 里注册该组件
+
+```ts
+    import Giscus from './Giscus.vue'	//引入
+```
+
+
+```ts
+	ctx.app.component('Giscus', Giscus) //注册 Giscus 组件
+```
+
+2. 在 Layout.vue 的插槽里使用该组件
+
+```vue
+      <template #doc-after>
+          <Giscus></Giscus>
+      </template>
+```
+
+​      
 
    
 
