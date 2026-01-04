@@ -183,6 +183,15 @@ export const generateNav = (): DefaultTheme.NavItem[] => {
                     ]
                 }
             ]
+        },
+        {
+            text: 'Quick', items: [
+                {text: '快速开始', link: '/Quick/'},
+                {text: 'quick_backend', link: '/Quick/quick_backend/'},
+                {text: 'quick_web', link: '/Quick/quick_web/'},
+                {text: 'quick_miniprogram', link: '/Quick/quick_miniprogram/'},
+                {text: 'quick_flutter', link: '/Quick/quick_flutter/'},
+            ]
         }
     ]
 }
